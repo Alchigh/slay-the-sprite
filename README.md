@@ -4,3 +4,4 @@
 
 [How to set up issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue)
 
+[How to Use VS Code with Godot!](https://www.youtube.com/watch?v=-urLt9bvteQ)
