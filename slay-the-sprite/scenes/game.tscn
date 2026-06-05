@@ -1,8 +1,299 @@
 [gd_scene format=3 uid="uid://bvfsvk5k6yqqr"]
 
 [ext_resource type="Script" uid="uid://be424jqltfih3" path="res://scripts/game_manager.gd" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://dg7il7ajl2ye0" path="res://assets/art/ReperBoss_SH.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ctgexokk1ml6p" path="res://scenes/UI.tscn" id="3_lnu2h"]
+[ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="4_gee14"]
+[ext_resource type="Texture2D" uid="uid://c378iwiaacoqx" path="res://assets/art/CopilotVivi.png" id="4_lbhrr"]
+[ext_resource type="Texture2D" uid="uid://d2d4oosnjgrh2" path="res://assets/art/CoPilotMage.png" id="5_iywne"]
+[ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="5_vtaks"]
+[ext_resource type="Texture2D" uid="uid://dadf2lekaic2n" path="res://assets/art/CoPilotMageBigEyes.png" id="6_p57ef"]
+[ext_resource type="Texture2D" uid="uid://bxs8acbvdjxdn" path="res://assets/art/TetraHedron.png" id="8_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://clmxpno1wu7nr" path="res://assets/art/CubeMob.png" id="9_kvpfn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tnpc"]
+texture = ExtResource("4_gee14")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvpfn"]
+texture = ExtResource("4_gee14")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywne"]
+atlas = ExtResource("4_lbhrr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p57ef"]
+atlas = ExtResource("4_lbhrr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u5sy4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iywne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p57ef")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnu2h"]
+atlas = ExtResource("2_yqjtg")
+region = Rect2(0, 0, 287, 237)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbhrr"]
+atlas = ExtResource("2_yqjtg")
+region = Rect2(0, 237, 287, 237)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iywne"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnu2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbhrr")
+}],
+"loop": true,
+"name": &"reaperIdle",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("8_kvpfn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("8_kvpfn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("8_kvpfn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("8_kvpfn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ca42v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}],
+"loop": true,
+"name": &"tetraIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kice"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_264po")
+}],
+"loop": true,
+"name": &"cubeIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
+atlas = ExtResource("5_iywne")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gee14"]
+atlas = ExtResource("5_iywne")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0tnpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5sy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gee14")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0tnpc"]
+atlas = ExtResource("6_p57ef")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtaks"]
+atlas = ExtResource("6_p57ef")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kvpfn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0tnpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtaks")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Game" type="Node2D" unique_id=221706527]
 
+[node name="UI-scene" parent="." unique_id=996322694 instance=ExtResource("3_lnu2h")]
+offset_left = 271.0
+offset_top = 526.0
+offset_right = 271.0
+offset_bottom = 526.0
+
 [node name="GameManager" type="Node" parent="." unique_id=1029560999]
 script = ExtResource("1_uwrxv")
+
+[node name="UI" type="Control" parent="." unique_id=1188335960]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="CanvasLayer" parent="UI" unique_id=1300657813]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Background" unique_id=578930065]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="EndTurn" type="Button" parent="UI/Background" unique_id=1040753286]
+offset_left = 237.0
+offset_top = 487.0
+offset_right = 367.0
+offset_bottom = 521.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_u5sy4")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_0tnpc")
+text = "End Turn"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Background" unique_id=1190264755]
+offset_left = 419.0
+offset_top = 259.0
+offset_right = 560.0
+offset_bottom = 299.0
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+bbcode_enabled = true
+text = "[b]text[/b] text 9999/999"
+
+[node name="Energy" type="RichTextLabel" parent="UI/Background" unique_id=1319859287]
+offset_left = 165.0
+offset_top = 487.0
+offset_right = 219.0
+offset_bottom = 521.0
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+theme_override_styles/normal = SubResource("StyleBoxTexture_kvpfn")
+bbcode_enabled = true
+text = "[b]3/3[/b]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1139913154]
+position = Vector2(889, 339)
+
+[node name="DragonMage" type="AnimatedSprite2D" parent="Enemies" unique_id=1068993099]
+position = Vector2(-543, 112)
+sprite_frames = SubResource("SpriteFrames_u5sy4")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.26153314
+flip_h = true
+
+[node name="Reaper" type="AnimatedSprite2D" parent="Enemies" unique_id=1530233514]
+position = Vector2(-428, 78)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_iywne")
+animation = &"reaperIdle"
+autoplay = "reaperIdle"
+frame_progress = 0.4000511
+
+[node name="TetraMob" type="AnimatedSprite2D" parent="Enemies" unique_id=1498696072]
+position = Vector2(-547, 56)
+sprite_frames = SubResource("SpriteFrames_ca42v")
+animation = &"tetraIdle"
+autoplay = "tetraIdle"
+frame_progress = 0.19456658
+
+[node name="CubeMob" type="AnimatedSprite2D" parent="Enemies" unique_id=994127135]
+position = Vector2(-544, 15)
+sprite_frames = SubResource("SpriteFrames_1kice")
+animation = &"cubeIdle"
+autoplay = "cubeIdle"
+frame_progress = 0.8393632
+
+[node name="Player" type="AnimatedSprite2D" parent="." unique_id=1036964741]
+position = Vector2(266, 451)
+sprite_frames = SubResource("SpriteFrames_0tnpc")
+autoplay = "default"
+frame_progress = 0.9402543
+
+[node name="PlayerBigEyes" type="AnimatedSprite2D" parent="." unique_id=132182270]
+position = Vector2(268, 397)
+sprite_frames = SubResource("SpriteFrames_kvpfn")
+autoplay = "default"
+frame_progress = 0.7809313

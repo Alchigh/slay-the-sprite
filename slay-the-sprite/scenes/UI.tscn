@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ctgexokk1ml6p"]
+
+[ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="1_dj8aq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ro3t7"]
+texture = ExtResource("1_dj8aq")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[node name="Control" type="Control" unique_id=996322694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1853564728]
+layer = -1
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=775995626]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06879827, 0.06879828, 0.06879828, 1)
+
+[node name="Panel" type="Panel" parent="." unique_id=418637924]
+editor_description = "2,5 x 3,5
+80 px x 112 px
+Card Size"
+layout_mode = 0
+offset_left = 78.0
+offset_top = 39.0
+offset_right = 158.0
+offset_bottom = 151.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ro3t7")
