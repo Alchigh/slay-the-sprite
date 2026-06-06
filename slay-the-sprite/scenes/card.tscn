@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://b80o87kplo5yc"]
+
+[ext_resource type="StyleBox" uid="uid://fq83p7ly1plk" path="res://UI/ButtonTheme.tres" id="1_kg30u"]
+[ext_resource type="Script" uid="uid://bc4acmwl3ygq6" path="res://scripts/card.gd" id="1_sy11y"]
+[ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="2_sy11y"]
+[ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6ligt"]
+[ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="4_8w5pg"]
+[ext_resource type="Texture2D" uid="uid://ukhlelev37ir" path="res://assets/art/CapeBlock.png" id="6_6ligt"]
+[ext_resource type="Texture2D" uid="uid://8k020q0gbfxb" path="res://assets/art/StaffAttack.png" id="7_8w5pg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ua6yw"]
+texture = ExtResource("4_8w5pg")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="Card 80x112" type="VBoxContainer" unique_id=1074774619]
+y_sort_enabled = true
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 81.0
+offset_bottom = 117.0
+pivot_offset = Vector2(40, 56)
+theme_override_constants/separation = -8
+script = ExtResource("1_sy11y")
+
+[node name="Node" type="Control" parent="." unique_id=789122191]
+y_sort_enabled = true
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="Picture" type="Panel" parent="Node" unique_id=232243954]
+z_index = 1
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 81.0
+offset_bottom = 55.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_kg30u")
+
+[node name="EnergyCost" type="RichTextLabel" parent="Node/Picture" unique_id=789689767]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -5.0
+offset_right = 17.0
+offset_bottom = 13.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_sy11y")
+theme_override_fonts/bold_font = ExtResource("3_6ligt")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_ua6yw")
+bbcode_enabled = true
+text = "[b]x[/b]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CapeBlock" type="Sprite2D" parent="Node/Picture" unique_id=796473084]
+visible = false
+position = Vector2(41, 24)
+texture = ExtResource("6_6ligt")
+
+[node name="StaffAttack" type="Sprite2D" parent="Node/Picture" unique_id=130014348]
+visible = false
+position = Vector2(42, 23)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("7_8w5pg")
+
+[node name="Text" type="Panel" parent="Node" unique_id=1664521369]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 47.0
+offset_right = 81.0
+offset_bottom = 117.0
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("1_kg30u")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node/Text" unique_id=973813473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Damage" type="RichTextLabel" parent="Node/Text/MarginContainer" unique_id=1862044445]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_sy11y")
+theme_override_fonts/bold_font = ExtResource("3_6ligt")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Deal x Damage"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Block" type="RichTextLabel" parent="Node/Text/MarginContainer" unique_id=735040360]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_sy11y")
+theme_override_fonts/bold_font = ExtResource("3_6ligt")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Gain x Block"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Debuff" type="RichTextLabel" parent="Node/Text/MarginContainer" unique_id=1831162474]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("2_sy11y")
+theme_override_fonts/bold_font = ExtResource("3_6ligt")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "Apply x Vulnerable
+
+Deal x Damage"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

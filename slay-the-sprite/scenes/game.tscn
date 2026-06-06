@@ -4,20 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://dg7il7ajl2ye0" path="res://assets/art/ReperBoss_SH.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://ctgexokk1ml6p" path="res://scenes/UI.tscn" id="3_lnu2h"]
 [ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_u5sy4"]
+[ext_resource type="StyleBox" uid="uid://fq83p7ly1plk" path="res://UI/ButtonTheme.tres" id="4_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="4_gee14"]
 [ext_resource type="Texture2D" uid="uid://c378iwiaacoqx" path="res://assets/art/CopilotVivi.png" id="4_lbhrr"]
 [ext_resource type="Texture2D" uid="uid://d2d4oosnjgrh2" path="res://assets/art/CoPilotMage.png" id="5_iywne"]
 [ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="5_vtaks"]
 [ext_resource type="Texture2D" uid="uid://dadf2lekaic2n" path="res://assets/art/CoPilotMageBigEyes.png" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://b3s0qvcajnx7a" path="res://scenes/hand.tscn" id="7_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bxs8acbvdjxdn" path="res://assets/art/TetraHedron.png" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://clmxpno1wu7nr" path="res://assets/art/CubeMob.png" id="9_kvpfn"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tnpc"]
-texture = ExtResource("4_gee14")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
+[ext_resource type="Script" uid="uid://du1mw5t351n57" path="res://scripts/player.gd" id="13_kvuet"]
+[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scenes/invertcolors.gdshader" id="15_ca42v"]
+[ext_resource type="Script" uid="uid://b1q8mvdy2asrq" path="res://scripts/screen_shake.gd" id="15_ir15t"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvpfn"]
 texture = ExtResource("4_gee14")
@@ -25,6 +23,42 @@ texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
+atlas = ExtResource("9_kvpfn")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1kice"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca42v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rysoc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssvqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_264po")
+}],
+"loop": true,
+"name": &"cubeIdle",
+"speed": 2.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iywne"]
 atlas = ExtResource("4_lbhrr")
@@ -44,30 +78,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_p57ef")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idleMage",
 "speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lnu2h"]
-atlas = ExtResource("2_yqjtg")
-region = Rect2(0, 0, 287, 237)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lbhrr"]
-atlas = ExtResource("2_yqjtg")
-region = Rect2(0, 237, 287, 237)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iywne"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lnu2h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lbhrr")
-}],
-"loop": true,
-"name": &"reaperIdle",
-"speed": 1.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
@@ -106,40 +118,26 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnu2h"]
+atlas = ExtResource("2_yqjtg")
+region = Rect2(0, 0, 287, 237)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rysoc"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbhrr"]
+atlas = ExtResource("2_yqjtg")
+region = Rect2(0, 237, 287, 237)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ssvqc"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_264po"]
-atlas = ExtResource("9_kvpfn")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1kice"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_iywne"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ca42v")
+"texture": SubResource("AtlasTexture_lnu2h")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rysoc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ssvqc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_264po")
+"texture": SubResource("AtlasTexture_lbhrr")
 }],
 "loop": true,
-"name": &"cubeIdle",
-"speed": 2.0
+"name": &"reaperIdle",
+"speed": 1.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5sy4"]
@@ -160,7 +158,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_gee14")
 }],
 "loop": true,
-"name": &"default",
+"name": &"defaultIdle",
 "speed": 10.0
 }]
 
@@ -182,17 +180,29 @@ animations = [{
 "texture": SubResource("AtlasTexture_vtaks")
 }],
 "loop": true,
-"name": &"default",
+"name": &"playerIdle",
 "speed": 10.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
+shader = ExtResource("15_ca42v")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rysoc"]
+texture = ExtResource("4_gee14")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
 [node name="Game" type="Node2D" unique_id=221706527]
 
-[node name="UI-scene" parent="." unique_id=996322694 instance=ExtResource("3_lnu2h")]
-offset_left = 271.0
-offset_top = 526.0
-offset_right = 271.0
-offset_bottom = 526.0
+[node name="Control" parent="." unique_id=996322694 instance=ExtResource("3_lnu2h")]
+visible = false
+z_index = -1
+offset_top = 1.0
+offset_bottom = 1.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1072675952]
 
 [node name="GameManager" type="Node" parent="." unique_id=1029560999]
 script = ExtResource("1_uwrxv")
@@ -204,6 +214,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Deck" parent="UI" unique_id=249841710 instance=ExtResource("7_ir15t")]
+z_index = 1
+layout_mode = 1
+offset_left = 160.0
+offset_top = 243.0
+offset_right = 160.0
+offset_bottom = 243.0
 
 [node name="Background" type="CanvasLayer" parent="UI" unique_id=1300657813]
 layer = -1
@@ -218,82 +236,128 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="EndTurn" type="Button" parent="UI/Background" unique_id=1040753286]
-offset_left = 237.0
-offset_top = 487.0
-offset_right = 367.0
-offset_bottom = 521.0
+offset_left = 522.0
+offset_top = 290.0
+offset_right = 576.0
+offset_bottom = 320.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_u5sy4")
+theme_override_fonts/font = ExtResource("5_vtaks")
 theme_override_font_sizes/font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxTexture_0tnpc")
-text = "End Turn"
+theme_override_styles/normal = ExtResource("4_dinhu")
+theme_override_styles/hover = ExtResource("4_dinhu")
+text = "End"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Background" unique_id=1190264755]
-offset_left = 419.0
-offset_top = 259.0
-offset_right = 560.0
-offset_bottom = 299.0
+offset_left = 472.0
+offset_top = 16.0
+offset_right = 613.0
+offset_bottom = 56.0
 theme_override_fonts/normal_font = ExtResource("5_vtaks")
 theme_override_fonts/bold_font = ExtResource("3_u5sy4")
 bbcode_enabled = true
-text = "[b]text[/b] text 9999/999"
+text = "[b]text[/b] text 
+999/999"
+fit_content = true
+scroll_active = false
 
 [node name="Energy" type="RichTextLabel" parent="UI/Background" unique_id=1319859287]
-offset_left = 165.0
-offset_top = 487.0
-offset_right = 219.0
-offset_bottom = 521.0
+offset_left = 64.0
+offset_top = 286.0
+offset_right = 118.0
+offset_bottom = 320.0
 theme_override_fonts/normal_font = ExtResource("5_vtaks")
 theme_override_fonts/bold_font = ExtResource("3_u5sy4")
 theme_override_styles/normal = SubResource("StyleBoxTexture_kvpfn")
 bbcode_enabled = true
-text = "[b]3/3[/b]"
+text = "[b]3/3"
 fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1139913154]
-position = Vector2(889, 339)
+
+[node name="CubeMob" type="AnimatedSprite2D" parent="Enemies" unique_id=994127135]
+position = Vector2(431, 72)
+sprite_frames = SubResource("SpriteFrames_1kice")
+animation = &"cubeIdle"
+autoplay = "cubeIdle"
 
 [node name="DragonMage" type="AnimatedSprite2D" parent="Enemies" unique_id=1068993099]
-position = Vector2(-543, 112)
+position = Vector2(432, 169)
 sprite_frames = SubResource("SpriteFrames_u5sy4")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.26153314
+animation = &"idleMage"
+autoplay = "idleMage"
 flip_h = true
 
+[node name="TetraMob" type="AnimatedSprite2D" parent="Enemies" unique_id=1498696072]
+position = Vector2(428, 113)
+sprite_frames = SubResource("SpriteFrames_ca42v")
+animation = &"tetraIdle"
+autoplay = "tetraIdle"
+
 [node name="Reaper" type="AnimatedSprite2D" parent="Enemies" unique_id=1530233514]
-position = Vector2(-428, 78)
+position = Vector2(532, 134)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_iywne")
 animation = &"reaperIdle"
 autoplay = "reaperIdle"
-frame_progress = 0.4000511
 
-[node name="TetraMob" type="AnimatedSprite2D" parent="Enemies" unique_id=1498696072]
-position = Vector2(-547, 56)
-sprite_frames = SubResource("SpriteFrames_ca42v")
-animation = &"tetraIdle"
-autoplay = "tetraIdle"
-frame_progress = 0.19456658
-
-[node name="CubeMob" type="AnimatedSprite2D" parent="Enemies" unique_id=994127135]
-position = Vector2(-544, 15)
-sprite_frames = SubResource("SpriteFrames_1kice")
-animation = &"cubeIdle"
-autoplay = "cubeIdle"
-frame_progress = 0.8393632
-
-[node name="Player" type="AnimatedSprite2D" parent="." unique_id=1036964741]
-position = Vector2(266, 451)
+[node name="NPC" type="AnimatedSprite2D" parent="." unique_id=1036964741]
+visible = false
+position = Vector2(213, 56)
 sprite_frames = SubResource("SpriteFrames_0tnpc")
-autoplay = "default"
-frame_progress = 0.9402543
+animation = &"defaultIdle"
+autoplay = "defaultIdle"
 
-[node name="PlayerBigEyes" type="AnimatedSprite2D" parent="." unique_id=132182270]
-position = Vector2(268, 397)
+[node name="Player" type="Node2D" parent="." unique_id=79542381]
+position = Vector2(144, 168)
+
+[node name="PlayerBigEyes" type="AnimatedSprite2D" parent="Player" unique_id=132182270]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_kvpfn")
-autoplay = "default"
-frame_progress = 0.7809313
+animation = &"playerIdle"
+autoplay = "playerIdle"
+script = ExtResource("13_kvuet")
+knockback = 10
+knockback_speed = 0.2
+shake_intensity = 3
+
+[node name="HP" type="RichTextLabel" parent="Player" unique_id=448987673]
+offset_left = -33.0
+offset_top = 21.0
+offset_right = 37.0
+offset_bottom = 37.0
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "42/69"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Block" type="RichTextLabel" parent="Player" unique_id=894226561]
+material = SubResource("ShaderMaterial_rysoc")
+offset_left = 31.0
+offset_top = 3.0
+offset_right = 48.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_rysoc")
+bbcode_enabled = true
+text = "8"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 3
+vertical_alignment = 3
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=720528897]
+anchor_mode = 0
+script = ExtResource("15_ir15t")
