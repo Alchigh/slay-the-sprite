@@ -8,6 +8,8 @@
 
 extends AnimatedSprite2D
 @onready var camera_2d: Camera2D = %Camera2D
+#@onready var enemy: Node2D = $"../../Enemies/Enemy"
+@onready var enemies: Node2D = $"../../Enemies"
 
 var tween: Tween
 @export var knockback: int
@@ -22,20 +24,29 @@ var og_place: Vector2 = position
 var current_hp: int 
 @export var player_block: int 
 
+@onready var deck: Control = $"../../GameManager/Deck"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	block_text.hide()
+	start_battle()
+	
+	deck.card_played.connect(add_block)
+	deck.attack_animation.connect(tween_animation)
+	#enemies.get_child(0).hit_player.connect(take_damage)
+
+## Reset block at the start of the battle
+func start_battle():
+	if player_block == 0: block_text.hide()
 	block_text.text = str(player_block)
 	
 	current_hp = max_hp
 	hp_text.text = str(max_hp) + "/" + str(max_hp)
-	
 
 ## Updates block and damage calculation through block
 func add_block(amount: int):
 	player_block += amount
 	
-	if player_block >= 0:
+	if player_block > 0:
 		block_text.show()
 		block_text.text = str(player_block)
 		return 0
@@ -58,11 +69,6 @@ func take_damage(hit: int) -> void:
 func _unhandled_key_input(event: InputEvent) -> void: # _input(event: InputEvent) -> void:
 	if event.is_action_pressed("knockback"):
 		take_damage(5)
-		print(":3")
-	elif event.is_action_pressed("attack"):
-		tween_animation(1, false)
-		print(":4")
-		add_block(6)
 
 ## Kills tween so no problems
 func reset_tween() -> void:
@@ -85,4 +91,4 @@ func tween_animation(direction: int, hit_flash: bool) -> void:
 	tween.chain().tween_property(self,"position", og_place, knockback_speed)
 
 	if hit_flash:
-		tween.tween_property(self,"self_modulate",Color.WHITE,	knockback_speed)
+		tween.tween_property(self,"self_modulate",Color.WHITE, knockback_speed)

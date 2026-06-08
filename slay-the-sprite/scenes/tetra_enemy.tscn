@@ -1,0 +1,147 @@
+[gd_scene format=3 uid="uid://byp4j5ltok4fn"]
+
+[ext_resource type="Script" uid="uid://bkuoj23v5ieuj" path="res://scripts/enemy.gd" id="1_dgeeq"]
+[ext_resource type="Texture2D" uid="uid://bxs8acbvdjxdn" path="res://assets/art/TetraHedron.png" id="2_dgeeq"]
+[ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="3_3sg7a"]
+[ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_jbust"]
+[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scenes/invertcolors.gdshader" id="5_eg7lq"]
+[ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="6_ncdte"]
+[ext_resource type="Script" uid="uid://b2mby7dhxboyk" path="res://scripts/tween_animation.gd" id="7_xsmbm"]
+[ext_resource type="Texture2D" uid="uid://bxfxuctooegpe" path="res://assets/art/EnemyAttacks.png" id="8_q85dk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("2_dgeeq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("2_dgeeq")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("2_dgeeq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("2_dgeeq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elxks"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}],
+"loop": true,
+"name": &"tetraIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rysoc"]
+shader = ExtResource("5_eg7lq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rysoc"]
+content_margin_top = 1.0
+content_margin_bottom = 0.0
+texture = ExtResource("6_ncdte")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5newe"]
+atlas = ExtResource("8_q85dk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37s47"]
+atlas = ExtResource("8_q85dk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt5mj"]
+atlas = ExtResource("8_q85dk")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1j6l"]
+atlas = ExtResource("8_q85dk")
+region = Rect2(32, 32, 32, 32)
+
+[node name="Enemy" type="Node2D" unique_id=596767294]
+script = ExtResource("1_dgeeq")
+max_hp = 5
+attack = 10
+
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=554510900]
+sprite_frames = SubResource("SpriteFrames_elxks")
+animation = &"tetraIdle"
+autoplay = "tetraIdle"
+
+[node name="HP" type="RichTextLabel" parent="." unique_id=480821421]
+offset_left = -33.0
+offset_top = 20.0
+offset_right = 37.0
+offset_bottom = 36.0
+theme_override_fonts/normal_font = ExtResource("3_3sg7a")
+theme_override_fonts/bold_font = ExtResource("4_jbust")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "42/69"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlockEnemy" type="RichTextLabel" parent="." unique_id=213738106]
+material = SubResource("ShaderMaterial_rysoc")
+offset_left = -51.0
+offset_top = 4.0
+offset_right = -34.0
+offset_bottom = 21.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_3sg7a")
+theme_override_fonts/bold_font = ExtResource("4_jbust")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_rysoc")
+bbcode_enabled = true
+text = "8"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TweenAnimation" type="Node" parent="." unique_id=1491195128]
+script = ExtResource("7_xsmbm")
+knockback = 10
+knockback_speed = 0.2
+shake_intensity = 6
+
+[node name="actionSprites" type="Node2D" parent="." unique_id=1714925212]
+position = Vector2(0, -28)
+scale = Vector2(0.5, 0.5)
+
+[node name="smallAttack" type="Sprite2D" parent="actionSprites" unique_id=911163770]
+visible = false
+texture = SubResource("AtlasTexture_5newe")
+
+[node name="mediumAttack" type="Sprite2D" parent="actionSprites" unique_id=1106820781]
+visible = false
+texture = SubResource("AtlasTexture_37s47")
+
+[node name="bigAttack" type="Sprite2D" parent="actionSprites" unique_id=1459918383]
+visible = false
+texture = SubResource("AtlasTexture_bt5mj")
+
+[node name="defend" type="Sprite2D" parent="actionSprites" unique_id=874395874]
+visible = false
+texture = SubResource("AtlasTexture_e1j6l")

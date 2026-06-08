@@ -135,9 +135,9 @@ theme_override_fonts/bold_font = ExtResource("3_6ligt")
 theme_override_font_sizes/normal_font_size = 8
 theme_override_font_sizes/bold_font_size = 8
 bbcode_enabled = true
-text = "Apply x Vulnerable
-
-Deal x Damage"
+text = "Slay
+the
+Sprite"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
