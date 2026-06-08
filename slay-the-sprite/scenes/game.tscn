@@ -13,9 +13,21 @@
 [ext_resource type="PackedScene" uid="uid://b3s0qvcajnx7a" path="res://scenes/hand.tscn" id="7_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bxs8acbvdjxdn" path="res://assets/art/TetraHedron.png" id="8_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://clmxpno1wu7nr" path="res://assets/art/CubeMob.png" id="9_kvpfn"]
+[ext_resource type="StyleBox" uid="uid://cue4rie46vtvc" path="res://negative_button.tres" id="9_rysoc"]
 [ext_resource type="Script" uid="uid://du1mw5t351n57" path="res://scripts/player.gd" id="13_kvuet"]
 [ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scenes/invertcolors.gdshader" id="15_ca42v"]
 [ext_resource type="Script" uid="uid://b1q8mvdy2asrq" path="res://scripts/screen_shake.gd" id="15_ir15t"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ssvqc"]
+device = -1
+keycode = 89
+unicode = 121
+
+[sub_resource type="Shortcut" id="Shortcut_264po"]
+events = [SubResource("InputEventKey_ssvqc")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssvqc"]
+shader = ExtResource("15_ca42v")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kvpfn"]
 texture = ExtResource("4_gee14")
@@ -23,6 +35,16 @@ texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssvqc"]
+bg_color = Color(0.6, 0.6, 0.6, 0.36078432)
+
+[sub_resource type="InputEventKey" id="InputEventKey_264po"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_ssvqc"]
+events = [SubResource("InputEventKey_264po")]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
 atlas = ExtResource("9_kvpfn")
@@ -188,6 +210,8 @@ animations = [{
 shader = ExtResource("15_ca42v")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rysoc"]
+content_margin_top = 1.0
+content_margin_bottom = 0.0
 texture = ExtResource("4_gee14")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
@@ -207,26 +231,18 @@ offset_bottom = 1.0
 [node name="GameManager" type="Node" parent="." unique_id=1029560999]
 script = ExtResource("1_uwrxv")
 
-[node name="UI" type="Control" parent="." unique_id=1188335960]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Deck" parent="UI" unique_id=249841710 instance=ExtResource("7_ir15t")]
+[node name="Deck" parent="GameManager" unique_id=249841710 instance=ExtResource("7_ir15t")]
 z_index = 1
-layout_mode = 1
-offset_left = 160.0
-offset_top = 243.0
-offset_right = 160.0
-offset_bottom = 243.0
+offset_left = 159.0
+offset_top = 240.0
+offset_right = 159.0
+offset_bottom = 240.0
+card_spacing = 60
 
-[node name="Background" type="CanvasLayer" parent="UI" unique_id=1300657813]
+[node name="Background" type="CanvasLayer" parent="GameManager" unique_id=1300657813]
 layer = -1
 
-[node name="ColorRect" type="ColorRect" parent="UI/Background" unique_id=578930065]
+[node name="ColorRect" type="ColorRect" parent="GameManager/Background" unique_id=578930065]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -235,23 +251,43 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="EndTurn" type="Button" parent="UI/Background" unique_id=1040753286]
+[node name="EndTurn" type="Button" parent="GameManager/Background" unique_id=1040753286]
 offset_left = 522.0
 offset_top = 290.0
 offset_right = 576.0
 offset_bottom = 320.0
+focus_mode = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_vtaks")
 theme_override_font_sizes/font_size = 16
 theme_override_styles/normal = ExtResource("4_dinhu")
 theme_override_styles/hover = ExtResource("4_dinhu")
+shortcut = SubResource("Shortcut_264po")
 text = "End"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="UI/Background" unique_id=1190264755]
-offset_left = 472.0
+[node name="EndTurnButton" type="RichTextLabel" parent="GameManager/Background/EndTurn" unique_id=1683017181]
+material = SubResource("ShaderMaterial_ssvqc")
+layout_mode = 0
+offset_left = -12.0
+offset_top = -16.0
+offset_right = 5.0
+offset_bottom = 1.0
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("9_rysoc")
+text = "Y"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameManager/Background" unique_id=1190264755]
+offset_left = 432.0
 offset_top = 16.0
-offset_right = 613.0
-offset_bottom = 56.0
+offset_right = 573.0
+offset_bottom = 48.0
 theme_override_fonts/normal_font = ExtResource("5_vtaks")
 theme_override_fonts/bold_font = ExtResource("3_u5sy4")
 bbcode_enabled = true
@@ -260,7 +296,7 @@ text = "[b]text[/b] text
 fit_content = true
 scroll_active = false
 
-[node name="Energy" type="RichTextLabel" parent="UI/Background" unique_id=1319859287]
+[node name="Energy" type="RichTextLabel" parent="GameManager/Background" unique_id=1319859287]
 offset_left = 64.0
 offset_top = 286.0
 offset_right = 118.0
@@ -274,6 +310,23 @@ fit_content = true
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="SetttingsButton" type="Button" parent="GameManager/Background" unique_id=1641679724]
+material = SubResource("ShaderMaterial_ssvqc")
+offset_left = 592.0
+offset_top = 16.0
+offset_right = 608.0
+offset_bottom = 32.0
+scale = Vector2(2, 2)
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_vtaks")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = ExtResource("9_rysoc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ssvqc")
+theme_override_styles/hover = ExtResource("9_rysoc")
+shortcut = SubResource("Shortcut_ssvqc")
+text = "="
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1139913154]
 
@@ -289,6 +342,21 @@ sprite_frames = SubResource("SpriteFrames_u5sy4")
 animation = &"idleMage"
 autoplay = "idleMage"
 flip_h = true
+
+[node name="HP" type="RichTextLabel" parent="Enemies/DragonMage" unique_id=150856849]
+offset_left = -34.0
+offset_top = 20.0
+offset_right = 36.0
+offset_bottom = 36.0
+theme_override_fonts/normal_font = ExtResource("5_vtaks")
+theme_override_fonts/bold_font = ExtResource("3_u5sy4")
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "42/69"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
 
 [node name="TetraMob" type="AnimatedSprite2D" parent="Enemies" unique_id=1498696072]
 position = Vector2(428, 113)
@@ -313,7 +381,7 @@ autoplay = "defaultIdle"
 [node name="Player" type="Node2D" parent="." unique_id=79542381]
 position = Vector2(144, 168)
 
-[node name="PlayerBigEyes" type="AnimatedSprite2D" parent="Player" unique_id=132182270]
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=132182270]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_kvpfn")
 animation = &"playerIdle"
@@ -322,6 +390,7 @@ script = ExtResource("13_kvuet")
 knockback = 10
 knockback_speed = 0.2
 shake_intensity = 3
+max_hp = 67
 
 [node name="HP" type="RichTextLabel" parent="Player" unique_id=448987673]
 offset_left = -33.0
@@ -343,7 +412,7 @@ material = SubResource("ShaderMaterial_rysoc")
 offset_left = 31.0
 offset_top = 3.0
 offset_right = 48.0
-offset_bottom = 21.0
+offset_bottom = 20.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/normal_font = ExtResource("5_vtaks")
@@ -355,9 +424,13 @@ text = "8"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
-horizontal_alignment = 3
-vertical_alignment = 3
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=720528897]
+unique_name_in_owner = true
 anchor_mode = 0
 script = ExtResource("15_ir15t")
+
+[connection signal="pressed" from="GameManager/Background/EndTurn" to="GameManager" method="_on_end_turn_pressed" binds= [NodePath("Background/EndTurn")]]
+[connection signal="pressed" from="GameManager/Background/SetttingsButton" to="GameManager" method="_on_settingsbutton_pressed" binds= [NodePath("Background/SetttingsButton")]]

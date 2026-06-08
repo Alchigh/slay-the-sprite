@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b3s0qvcajnx7a"]
 
 [ext_resource type="Script" uid="uid://dhawbkkcmldt2" path="res://scripts/cards_in_hand.gd" id="1_cmdsa"]
-[ext_resource type="PackedScene" uid="uid://b80o87kplo5yc" path="res://scenes/card.tscn" id="2_k7pjy"]
 
 [node name="Deck" type="Control" unique_id=249841710]
 layout_mode = 3
@@ -13,38 +12,4 @@ offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cmdsa")
-
-[node name="Card 80x112" parent="." unique_id=1074774619 instance=ExtResource("2_k7pjy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 112.0
-
-[node name="Card 80x113" parent="." unique_id=170578795 instance=ExtResource("2_k7pjy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 112.0
-
-[node name="Card 80x114" parent="." unique_id=457013933 instance=ExtResource("2_k7pjy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 112.0
-
-[node name="Card 80x115" parent="." unique_id=2015536016 instance=ExtResource("2_k7pjy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 112.0
-
-[node name="Card 80x116" parent="." unique_id=1810911671 instance=ExtResource("2_k7pjy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 80.0
-offset_bottom = 112.0
+hand_size = 5
