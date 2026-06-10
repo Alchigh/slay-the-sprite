@@ -1,0 +1,454 @@
+[gd_scene format=3 uid="uid://bnexxmtan6htm"]
+
+[ext_resource type="Script" uid="uid://d21ujemccvxq7" path="res://scripts/start_menu.gd" id="1_e58y3"]
+[ext_resource type="StyleBox" uid="uid://fq83p7ly1plk" path="res://UI/ButtonTheme.tres" id="1_ouf4f"]
+[ext_resource type="Texture2D" uid="uid://vuewnpvcfc0i" path="res://icon.svg" id="1_thu50"]
+[ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="3_h61rw"]
+[ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_fcv5n"]
+[ext_resource type="Texture2D" uid="uid://bxs8acbvdjxdn" path="res://assets/art/TetraHedron.png" id="5_fcv5n"]
+[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scripts/invertcolors.gdshader" id="6_nxjfj"]
+[ext_resource type="StyleBox" uid="uid://cue4rie46vtvc" path="res://UI/negative_button.tres" id="7_u4qax"]
+[ext_resource type="Shader" uid="uid://cal067mcoo241" path="res://UI/stars_menu.gdshader" id="8_u4qax"]
+[ext_resource type="AudioStream" uid="uid://dc5obug0rm7pr" path="res://assets/audio/music/341865__foolboymedia__tunnels.wav" id="9_5byqq"]
+[ext_resource type="Texture2D" uid="uid://gkx2rghk8m8r" path="res://assets/art/itchio-textless-black.svg" id="11_apowk"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_e58y3"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="Shortcut" id="Shortcut_apowk"]
+events = [SubResource("InputEventKey_e58y3")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e58y3"]
+shader = ExtResource("6_nxjfj")
+
+[sub_resource type="InputEventKey" id="InputEventKey_vnuwp"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="Shortcut" id="Shortcut_egh8s"]
+events = [SubResource("InputEventKey_vnuwp")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dinhu"]
+atlas = ExtResource("5_fcv5n")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvuet"]
+atlas = ExtResource("5_fcv5n")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trtic"]
+atlas = ExtResource("5_fcv5n")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir15t"]
+atlas = ExtResource("5_fcv5n")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4v6gu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dinhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvuet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trtic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir15t")
+}],
+"loop": true,
+"name": &"tetraIdle",
+"speed": 2.0
+}]
+
+[sub_resource type="InputEventKey" id="InputEventKey_nxjfj"]
+device = -1
+keycode = 4194320
+
+[sub_resource type="Shortcut" id="Shortcut_u4qax"]
+events = [SubResource("InputEventKey_nxjfj")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u4qax"]
+device = -1
+keycode = 4194322
+
+[sub_resource type="Shortcut" id="Shortcut_5byqq"]
+events = [SubResource("InputEventKey_u4qax")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5byqq"]
+shader = ExtResource("8_u4qax")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/bigStarSlow = 2.0
+shader_parameter/mediumStarSlow = 6.0
+shader_parameter/smallStarSlow = 8.0
+shader_parameter/smallStarAmount = 0.002
+shader_parameter/mediumStarAmount = 0.01
+shader_parameter/bigStarAmount = 0.02
+
+[sub_resource type="InputEventKey" id="InputEventKey_apowk"]
+device = -1
+keycode = 73
+unicode = 105
+
+[sub_resource type="Shortcut" id="Shortcut_vnuwp"]
+events = [SubResource("InputEventKey_apowk")]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnuwp"]
+shader = ExtResource("6_nxjfj")
+
+[node name="StartMenu" type="Control" unique_id=460641524]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e58y3")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1331114389]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1, 1.1)
+pivot_offset = Vector2(320, 160)
+texture = ExtResource("1_thu50")
+expand_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="Really?" type="Panel" parent="." unique_id=1547665320]
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(188, 90)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_ouf4f")
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Really?" unique_id=1726816797]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Really?/VBoxContainer" unique_id=1846896702]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 15
+
+[node name="Really" type="RichTextLabel" parent="Really?/VBoxContainer/MarginContainer" unique_id=2124034941]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Like for real?"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Really?/VBoxContainer" unique_id=1597875051]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="Yes" type="Button" parent="Really?/VBoxContainer/HBoxContainer" unique_id=1430276129]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 26)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_h61rw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("1_ouf4f")
+theme_override_styles/hover = ExtResource("1_ouf4f")
+shortcut = SubResource("Shortcut_apowk")
+text = "Yes"
+
+[node name="KeyBindHint" type="RichTextLabel" parent="Really?/VBoxContainer/HBoxContainer/Yes" unique_id=638634383]
+material = SubResource("ShaderMaterial_e58y3")
+layout_mode = 0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("7_u4qax")
+text = "◀"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="No" type="Button" parent="Really?/VBoxContainer/HBoxContainer" unique_id=1871587195]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(52, 26)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_h61rw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("1_ouf4f")
+theme_override_styles/hover = ExtResource("1_ouf4f")
+shortcut = SubResource("Shortcut_egh8s")
+text = "No"
+
+[node name="EndTurnButton" type="RichTextLabel" parent="Really?/VBoxContainer/HBoxContainer/No" unique_id=736732366]
+material = SubResource("ShaderMaterial_e58y3")
+layout_mode = 0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("7_u4qax")
+text = "▶"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="logo" type="Control" parent="." unique_id=739628645]
+anchors_preset = 0
+offset_left = 15.0
+offset_top = -60.0
+offset_right = 15.0
+offset_bottom = -60.0
+pivot_offset = Vector2(320, 160)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="LogoText1" type="RichTextLabel" parent="logo" unique_id=1905757364]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 115.95
+offset_top = 99.0
+offset_right = 323.95032
+offset_bottom = 163.001
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Slay"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LogoText2" type="RichTextLabel" parent="logo" unique_id=1007327373]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 358.0
+offset_top = 121.0
+offset_right = 478.0
+offset_bottom = 169.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 48
+bbcode_enabled = true
+text = "the"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LogoText3" type="RichTextLabel" parent="logo" unique_id=771272672]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 156.0
+offset_top = 170.0
+offset_right = 468.0
+offset_bottom = 234.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "Sprite"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite" type="AnimatedSprite2D" parent="logo" unique_id=147585699]
+position = Vector2(345, 168)
+sprite_frames = SubResource("SpriteFrames_4v6gu")
+animation = &"tetraIdle"
+autoplay = "tetraIdle"
+
+[node name="Play" type="Button" parent="logo" unique_id=1333663030]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 255.0
+offset_right = 362.0
+offset_bottom = 297.0
+pivot_offset = Vector2(57, 21)
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_h61rw")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_ouf4f")
+theme_override_styles/pressed = ExtResource("1_ouf4f")
+theme_override_styles/hover = ExtResource("1_ouf4f")
+shortcut = SubResource("Shortcut_u4qax")
+text = "Play"
+
+[node name="EndTurnButton" type="RichTextLabel" parent="logo/Play" unique_id=1857416176]
+material = SubResource("ShaderMaterial_e58y3")
+layout_mode = 0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("7_u4qax")
+text = "▲"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Button" parent="logo" unique_id=1272321465]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 248.0
+offset_top = 307.0
+offset_right = 362.0
+offset_bottom = 349.0
+pivot_offset = Vector2(57, 21)
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_h61rw")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = ExtResource("1_ouf4f")
+theme_override_styles/pressed = ExtResource("1_ouf4f")
+theme_override_styles/hover = ExtResource("1_ouf4f")
+shortcut = SubResource("Shortcut_5byqq")
+text = "Quit"
+
+[node name="EndTurnButton" type="RichTextLabel" parent="logo/Quit" unique_id=1531951350]
+material = SubResource("ShaderMaterial_e58y3")
+layout_mode = 0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 6.0
+offset_bottom = 6.0
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("7_u4qax")
+text = "▼"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackgroundImage" type="CanvasLayer" parent="." unique_id=1477243032]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundImage" unique_id=2091908863]
+material = SubResource("ShaderMaterial_5byqq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="BackgroundImage" unique_id=1064420494]
+
+[node name="BGM" type="AudioStreamPlayer" parent="." unique_id=2094600253]
+stream = ExtResource("9_5byqq")
+autoplay = true
+bus = &"Music"
+
+[node name="ItchLink" type="CanvasLayer" parent="." unique_id=1846977316]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ItchLink" unique_id=351745765]
+
+[node name="ItchButton" type="Button" parent="ItchLink" unique_id=216468740]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut = SubResource("Shortcut_vnuwp")
+
+[node name="ItchIoLogo" type="Node2D" parent="ItchLink" unique_id=1576525836]
+unique_name_in_owner = true
+position = Vector2(576, 256)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ItchLink/ItchIoLogo" unique_id=1717548139]
+material = SubResource("ShaderMaterial_vnuwp")
+texture = ExtResource("11_apowk")
+
+[node name="KeyBindHint" type="RichTextLabel" parent="ItchLink/ItchIoLogo" unique_id=70757195]
+material = SubResource("ShaderMaterial_e58y3")
+offset_left = -175.0
+offset_top = -150.0
+offset_right = -158.0
+offset_bottom = -133.0
+scale = Vector2(5, 5)
+theme_override_fonts/normal_font = ExtResource("3_h61rw")
+theme_override_fonts/bold_font = ExtResource("4_fcv5n")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_styles/normal = ExtResource("7_u4qax")
+text = "i"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1

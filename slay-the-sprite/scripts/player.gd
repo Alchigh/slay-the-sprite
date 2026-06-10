@@ -9,7 +9,10 @@
 extends AnimatedSprite2D
 @onready var camera_2d: Camera2D = %Camera2D
 #@onready var enemy: Node2D = $"../../Enemies/Enemy"
-@onready var enemies: Node2D = $"../../Enemies"
+## SFX stuff
+@onready var got_hit: AudioStreamPlayer = $"../GotHit"
+@onready var shield_gain: AudioStreamPlayer = $"../ShieldGain"
+@onready var block_hit: AudioStreamPlayer = $"../BlockHit"
 
 var tween: Tween
 @export var knockback: int
@@ -44,25 +47,32 @@ func start_battle():
 
 ## Updates block and damage calculation through block
 func add_block(amount: int):
+	if amount > 0: shield_gain.play()
 	player_block += amount
+	var dmg
 	
-	if player_block > 0:
+	if player_block >= 0 and amount != 0:
 		block_text.show()
 		block_text.text = str(player_block)
-		return 0
+		block_hit.play()
+		dmg = 0
 	else:
-		var dmg = player_block
+		dmg = player_block
 		player_block = 0
-		block_text.hide()
-		return dmg
+	
+	if player_block == 0: block_text.hide()
+	return dmg
 
 ## Updates HP amount and does damage calculation
 func take_damage(hit: int) -> void:
 	hit = add_block(-1 * hit)
 	if hit != 0:
 		tween_animation(-2, true)
+		got_hit.play()
 		current_hp = current_hp + hit
 		hp_text.text = "%s/%s" % [current_hp, max_hp]
+	if hit == 0: block_hit.play()
+	if current_hp < 1: get_tree().change_scene_to_file("res://scenes/start_menu.tscn")
 
 # Knock effect when space pressed
 # Moves object back knocback amount in knockbackspeed and changes the sprite color

@@ -24,6 +24,7 @@ var attack: int
 ## How much block it gives
 var block: int
 
+@warning_ignore("unused_signal")
 signal update_hands
 
 # Called when the node enters the scene tree for the first time.

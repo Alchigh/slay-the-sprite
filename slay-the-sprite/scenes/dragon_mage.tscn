@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c378iwiaacoqx" path="res://assets/art/CopilotVivi.png" id="2_ipns3"]
 [ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="3_8qclf"]
 [ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_w8i8w"]
-[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scenes/invertcolors.gdshader" id="5_otmr2"]
+[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scripts/invertcolors.gdshader" id="5_otmr2"]
 [ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="6_wtq4b"]
 [ext_resource type="Script" uid="uid://b2mby7dhxboyk" path="res://scripts/tween_animation.gd" id="7_j0cyh"]
 [ext_resource type="Texture2D" uid="uid://bxfxuctooegpe" path="res://assets/art/EnemyAttacks.png" id="8_g0wcc"]

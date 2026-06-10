@@ -62,11 +62,12 @@ func _process(_delta: float) -> void:
 		if cards.size() > 0 and current_energy - cards[index].energy >= 0:
 			if cards[index].debuff.text.contains("Gain"):
 				card_played.emit(cards[index].block)
+
 			if cards[index].debuff.text.contains("Deal"):
 				print("Dealt " + str(cards[index].attack))
 				player_attack.emit(cards[index].attack)
-				attack_animation.emit(2, false)
-				
+				attack_animation.emit(1, false)
+
 			current_energy -= cards[index].energy
 			print(str(current_energy - cards[index].energy))
 			

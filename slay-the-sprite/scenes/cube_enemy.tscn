@@ -3,11 +3,15 @@
 [ext_resource type="Script" uid="uid://bkuoj23v5ieuj" path="res://scripts/enemy.gd" id="1_h4g5p"]
 [ext_resource type="FontFile" uid="uid://ce5hk01f1s7jh" path="res://assets/fonts/PixelOperator8.ttf" id="3_fru1p"]
 [ext_resource type="FontFile" uid="uid://b56hcwdk6jea2" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_yn2hx"]
-[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scenes/invertcolors.gdshader" id="5_hoh3g"]
+[ext_resource type="Shader" uid="uid://bjietji1egl20" path="res://scripts/invertcolors.gdshader" id="5_hoh3g"]
 [ext_resource type="Texture2D" uid="uid://bmy7kaspwbxuy" path="res://assets/art/EBText.png" id="6_xy2a2"]
 [ext_resource type="Script" uid="uid://b2mby7dhxboyk" path="res://scripts/tween_animation.gd" id="7_hyyaj"]
 [ext_resource type="Texture2D" uid="uid://bxfxuctooegpe" path="res://assets/art/EnemyAttacks.png" id="8_bagjb"]
+[ext_resource type="AudioStream" uid="uid://crilmgsenga3r" path="res://assets/audio/sfx/enemy_got_hit.wav" id="9_fru1p"]
 [ext_resource type="Texture2D" uid="uid://clmxpno1wu7nr" path="res://assets/art/CubeMob.png" id="9_tvnlg"]
+[ext_resource type="AudioStream" uid="uid://c33oc4rwtsj0p" path="res://assets/audio/sfx/enemy_dead.wav" id="10_fru1p"]
+[ext_resource type="AudioStream" uid="uid://cqgeunap4mjrq" path="res://assets/audio/sfx/ShieldGain.wav" id="11_yn2hx"]
+[ext_resource type="AudioStream" uid="uid://bsqmtbjbf2u3o" path="res://assets/audio/sfx/ShieldHit.wav" id="12_hoh3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ca42v"]
 atlas = ExtResource("9_tvnlg")
@@ -74,9 +78,10 @@ atlas = ExtResource("8_bagjb")
 region = Rect2(32, 32, 32, 32)
 
 [node name="Enemy" type="Node2D" unique_id=596767294]
+scale = Vector2(2, 2)
 script = ExtResource("1_h4g5p")
-max_hp = 21
-attack = 10
+max_hp = 42
+attack = 12
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1597037362]
 sprite_frames = SubResource("SpriteFrames_fru1p")
@@ -90,7 +95,7 @@ offset_right = 37.0
 offset_bottom = 36.0
 theme_override_fonts/normal_font = ExtResource("3_fru1p")
 theme_override_fonts/bold_font = ExtResource("4_yn2hx")
-theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/normal_font_size = 8
 theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
 text = "42/69"
@@ -100,12 +105,32 @@ autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="DMG" type="RichTextLabel" parent="." unique_id=899281314]
+offset_left = -11.0
+offset_top = -26.0
+offset_right = 5.0
+offset_bottom = -18.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("3_fru1p")
+theme_override_fonts/bold_font = ExtResource("4_yn2hx")
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+text = "[b]77[/b]
+"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BlockEnemy" type="RichTextLabel" parent="." unique_id=213738106]
 material = SubResource("ShaderMaterial_rysoc")
-offset_left = -51.0
-offset_top = 4.0
-offset_right = -34.0
-offset_bottom = 21.0
+offset_left = -26.0
+offset_top = 15.0
+offset_right = -9.0
+offset_bottom = 32.0
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/normal_font = ExtResource("3_fru1p")
@@ -145,3 +170,19 @@ texture = SubResource("AtlasTexture_bt5mj")
 [node name="defend" type="Sprite2D" parent="actionSprites" unique_id=874395874]
 visible = false
 texture = SubResource("AtlasTexture_e1j6l")
+
+[node name="GotHit" type="AudioStreamPlayer" parent="." unique_id=1864217507]
+stream = ExtResource("9_fru1p")
+bus = &"SFX"
+
+[node name="DeadSFX" type="AudioStreamPlayer" parent="." unique_id=1817445524]
+stream = ExtResource("10_fru1p")
+bus = &"SFX"
+
+[node name="ShieldGain" type="AudioStreamPlayer" parent="." unique_id=1631158626]
+stream = ExtResource("11_yn2hx")
+volume_db = 8.0
+
+[node name="BlockHit" type="AudioStreamPlayer" parent="." unique_id=770265293]
+stream = ExtResource("12_hoh3g")
+volume_db = 15.0

@@ -12,10 +12,10 @@ signal remove_hand
 func _ready() -> void:
 	print("Hello, World!")
 	#enemy.enemy_dead.connect(show_events)
-	pass
+	#player_hit
+	#enemy_hit
 
 func show_events():
-	victories += 1 
 	events.show()
 	deck.hide()
 	
@@ -27,6 +27,8 @@ func next_event(input):
 	await _on_end_turn_pressed(input)
 	events.hide()
 	var button = get_node(input)
+	victories += 1 
+	print("Victories: " + str(victories))
 	next_battle.emit(victories, button.name)
 	deck.show()
 	remove_hand.emit()
@@ -42,7 +44,6 @@ func _on_end_turn_pressed(buttons) -> void:
 	tween.tween_property(button, "scale", Vector2(0.9, 0.9), 0.05)
 	tween.chain().tween_property(button, "scale", Vector2.ONE, 0.06)
 	await tween.finished
-
 
 ## Animates Settings button tween 
 ## Reloads and resets Scenes

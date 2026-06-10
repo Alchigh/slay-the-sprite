@@ -11,14 +11,18 @@ config_version=5
 [application]
 
 config/name="slay-the-sprite"
-run/main_scene="uid://bvfsvk5k6yqqr"
+run/main_scene="uid://bnexxmtan6htm"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="uid://mgtaewvt301"
+
+[audio]
+
+buses/default_bus_layout="uid://cu5biwc2dfskn"
 
 [display]
 
 window/size/viewport_width=640
-window/size/viewport_height=360
+window/size/viewport_height=320
 window/stretch/mode="viewport"
 
 [input]
